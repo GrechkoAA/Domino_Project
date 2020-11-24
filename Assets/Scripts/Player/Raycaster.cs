@@ -41,10 +41,13 @@ namespace Player
         private void Spawn(Vector3 position)
         {
             var domino = Instantiate(_prefab, position + Vector3.up, Quaternion.identity);
-            
-            if (_lastSpawnedFigure != null)
-                domino.transform.LookAt(_lastSpawnedFigure);
 
+            if (_lastSpawnedFigure != null)
+            {
+                domino.transform.LookAt(_lastSpawnedFigure);
+                domino.transform.eulerAngles = new Vector3(0f, domino.transform.eulerAngles.y, 0f);
+            }
+            
             _lastSpawnedFigure = domino.transform;
         }
         
