@@ -25,13 +25,16 @@ namespace Player
 
         private bool CanPlaceFigure()
         {
-            RaycastHit[] hits = Physics.SphereCastAll(GetMouseRay(), 0.3f, Mathf.Infinity);
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay(), Mathf.Infinity);
             if (hits.Length == 0) return false;
             
             foreach (var hit in hits)
             {
-                if (!hit.collider.CompareTag("Ground") || hit.collider.GetComponent<DominoFigure>() != null)
-                    return false;
+                var k = Physics.SphereCastAll(hit.point, 0.1f, Vector3.up);
+                foreach (var x in k)
+                {
+                    if (x.collider.GetComponent<DominoFigure>() != null) return false;
+                }
             }
 
             _spawnPosition = hits[0].point;
@@ -41,16 +44,18 @@ namespace Player
         private void Spawn(Vector3 position)
         {
             var domino = Instantiate(_prefab, position + Vector3.up, Quaternion.identity);
-
+            
             if (_lastSpawnedFigure != null)
             {
+                _lastSpawnedFigure.LookAt(domino.transform);
+                _lastSpawnedFigure.eulerAngles = new Vector3(0f, _lastSpawnedFigure.transform.eulerAngles.y, 0f);
                 domino.transform.LookAt(_lastSpawnedFigure);
                 domino.transform.eulerAngles = new Vector3(0f, domino.transform.eulerAngles.y, 0f);
             }
             
             _lastSpawnedFigure = domino.transform;
         }
-        
+
         private Ray GetMouseRay()
         {
             return Camera.main.ScreenPointToRay(Input.mousePosition);
