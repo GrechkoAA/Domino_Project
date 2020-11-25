@@ -7,7 +7,9 @@ namespace Player
     public class Raycaster : MonoBehaviour
     {
         [SerializeField] private GameObject _prefab;
-
+        [SerializeField] private float _minimalDistanceBetweenFigures = 0.2f;
+        [SerializeField] private Camera _camera;
+        
         private Vector3 _spawnPosition;
         private Transform _lastSpawnedFigure;
 
@@ -32,11 +34,10 @@ namespace Player
             {
                 if (hit.collider.GetComponent<DominoFigure>() != null) continue;
                 
-                var sphereHits = Physics.SphereCastAll(hit.point, 0.2f, Vector3.up);
+                var sphereHits = Physics.SphereCastAll(hit.point, _minimalDistanceBetweenFigures, Vector3.up);
                 foreach (var sphereHit in sphereHits)
-                {
-                    if (sphereHit.collider.GetComponent<DominoFigure>() != null) return false;
-                }
+                    if (sphereHit.collider.GetComponent<DominoFigure>() != null) 
+                        return false;
             }
 
             _spawnPosition = hits[0].point;
@@ -45,22 +46,27 @@ namespace Player
 
         private void Spawn(Vector3 position)
         {
-            var domino = Instantiate(_prefab, position + Vector3.up, Quaternion.identity);
+            var domino = Instantiate(_prefab, position + Vector3.up, Quaternion.identity).transform;
             
-            if (_lastSpawnedFigure != null)
+            if (_lastSpawnedFigure != null) 
             {
-                _lastSpawnedFigure.LookAt(domino.transform);
-                _lastSpawnedFigure.eulerAngles = new Vector3(0f, _lastSpawnedFigure.transform.eulerAngles.y, 0f);
-                domino.transform.LookAt(_lastSpawnedFigure);
-                domino.transform.eulerAngles = new Vector3(0f, domino.transform.eulerAngles.y, 0f);
+                ApplyRotation(_lastSpawnedFigure, domino);
+                ApplyRotation(domino, _lastSpawnedFigure);
             }
             
-            _lastSpawnedFigure = domino.transform;
+            _lastSpawnedFigure = domino;
         }
 
         private Ray GetMouseRay()
         {
-            return Camera.main.ScreenPointToRay(Input.mousePosition);
+            return _camera.ScreenPointToRay(Input.mousePosition);
+        }
+
+        private void ApplyRotation(Transform current, Transform rotateTo)
+        {
+            current.LookAt(rotateTo);
+            Vector3 newRotation = new Vector3(0f, current.eulerAngles.y, 0f);
+            current.eulerAngles = newRotation;
         }
     }
 }
