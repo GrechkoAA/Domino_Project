@@ -27,13 +27,15 @@ namespace Player
         {
             RaycastHit[] hits = Physics.RaycastAll(GetMouseRay(), Mathf.Infinity);
             if (hits.Length == 0) return false;
-            
+
             foreach (var hit in hits)
             {
-                var k = Physics.SphereCastAll(hit.point, 0.1f, Vector3.up);
-                foreach (var x in k)
+                if (hit.collider.GetComponent<DominoFigure>() != null) continue;
+                
+                var sphereHits = Physics.SphereCastAll(hit.point, 0.2f, Vector3.up);
+                foreach (var sphereHit in sphereHits)
                 {
-                    if (x.collider.GetComponent<DominoFigure>() != null) return false;
+                    if (sphereHit.collider.GetComponent<DominoFigure>() != null) return false;
                 }
             }
 
