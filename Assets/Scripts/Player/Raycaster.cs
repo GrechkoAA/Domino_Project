@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Player
 {
@@ -15,14 +13,14 @@ namespace Player
 
         private void Update()
         {
-            TryRaycast();
+            if (Input.GetMouseButton(0))
+                TryPlaceFigure();
         }
 
-        private void TryRaycast()
+        private void TryPlaceFigure()
         {
-            if (Input.GetMouseButton(0))
-                if (CanPlaceFigure())
-                    Spawn(_spawnPosition);
+            if (CanPlaceFigure())
+              Spawn(_spawnPosition);
         }
 
         private bool CanPlaceFigure()
@@ -32,7 +30,7 @@ namespace Player
 
             foreach (var hit in hits)
             {
-                if (hit.collider.GetComponent<DominoFigure>() != null) continue;
+                if (hit.collider.GetComponent<DominoFigure>() != null) continue; //здесь надо проверять на попадание в игровую зону. Если попадания нет - выходим из цикла
                 
                 var sphereHits = Physics.SphereCastAll(hit.point, _minimalDistanceBetweenFigures, Vector3.up);
                 foreach (var sphereHit in sphereHits)
@@ -65,7 +63,7 @@ namespace Player
         private void ApplyRotation(Transform current, Transform rotateTo)
         {
             current.LookAt(rotateTo);
-            Vector3 newRotation = new Vector3(0f, current.eulerAngles.y, 0f);
+            var newRotation = new Vector3(0f, current.eulerAngles.y, 0f);
             current.eulerAngles = newRotation;
         }
     }
