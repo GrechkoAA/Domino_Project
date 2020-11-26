@@ -5,12 +5,12 @@ namespace Player
 {
     public class Raycaster : MonoBehaviour
     {
-        [SerializeField] private GameObject _prefab;
+        [SerializeField] private DominoFigure _prefab;
         [SerializeField] private float _minimalDistanceBetweenFigures = 0.2f;
         [SerializeField] private Camera _camera;
         
         private Vector3 _spawnPosition;
-        private Transform _lastSpawnedFigure;
+        private DominoFigure _lastSpawnedFigure;
 
         private const string PlaceableGround = "Ground";
 
@@ -48,12 +48,12 @@ namespace Player
 
         private void Spawn(Vector3 position)
         {
-            var domino = Instantiate(_prefab, position + Vector3.up, Quaternion.identity).transform;
+            var domino = Instantiate(_prefab, position + Vector3.up, Quaternion.identity);
             
             if (_lastSpawnedFigure != null) 
             {
-                ApplyRotation(_lastSpawnedFigure, domino);
-                ApplyRotation(domino, _lastSpawnedFigure);
+                _lastSpawnedFigure.ApplyRotation(domino.transform);
+                domino.ApplyRotation(_lastSpawnedFigure.transform);
             }
             
             _lastSpawnedFigure = domino;
@@ -62,13 +62,6 @@ namespace Player
         private Ray GetMouseRay()
         {
             return _camera.ScreenPointToRay(Input.mousePosition);
-        }
-
-        private void ApplyRotation(Transform current, Transform rotateTo)
-        {
-            current.LookAt(rotateTo);
-            var newRotation = new Vector3(0f, current.eulerAngles.y, 0f);
-            current.eulerAngles = newRotation;
         }
     }
 }
