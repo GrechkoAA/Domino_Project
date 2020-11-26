@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c3802b400fdc4648bd447c8bd91afef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 7123504496037309080, guid: 6a67fd97cb08d4c1d818a33ba8be2144, type: 3}
+  _prefab: {fileID: 5269928657830716438, guid: 6a67fd97cb08d4c1d818a33ba8be2144, type: 3}
   _minimalDistanceBetweenFigures: 0.2
   _camera: {fileID: 963194227}
 --- !u!1001 &3731732988042086308
