@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace Player
 {
@@ -10,6 +11,8 @@ namespace Player
         
         private Vector3 _spawnPosition;
         private Transform _lastSpawnedFigure;
+
+        private const string PlaceableGround = "Ground";
 
         private void Update()
         {
@@ -30,16 +33,17 @@ namespace Player
 
             foreach (var hit in hits)
             {
-                if (hit.collider.GetComponent<DominoFigure>() != null) continue; //здесь надо проверять на попадание в игровую зону. Если попадания нет - выходим из цикла
+                if (!hit.collider.CompareTag(PlaceableGround)) continue;
                 
                 var sphereHits = Physics.SphereCastAll(hit.point, _minimalDistanceBetweenFigures, Vector3.up);
-                foreach (var sphereHit in sphereHits)
-                    if (sphereHit.collider.GetComponent<DominoFigure>() != null) 
-                        return false;
-            }
+                if (sphereHits.Any(sphereHit => sphereHit.collider.GetComponent<DominoFigure>() != null))
+                    return false;
 
-            _spawnPosition = hits[0].point;
-            return true;
+                _spawnPosition = hit.point;
+                return true;
+            }
+            
+            return false;
         }
 
         private void Spawn(Vector3 position)
