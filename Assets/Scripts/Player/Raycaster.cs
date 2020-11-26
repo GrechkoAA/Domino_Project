@@ -7,10 +7,11 @@ namespace Player
     {
         [SerializeField] private DominoFigure _prefab;
         [SerializeField] private float _minimalDistanceBetweenFigures = 0.2f;
+        [SerializeField] private float _lineBreakDistance = 1f;
         [SerializeField] private Camera _camera;
         
         private Vector3 _spawnPosition;
-        private DominoFigure _lastSpawnedFigure;
+        private DominoFigure _previousInstance;
 
         private const string PlaceableGround = "Ground";
 
@@ -48,15 +49,24 @@ namespace Player
 
         private void Spawn(Vector3 position)
         {
-            var domino = Instantiate(_prefab, position + Vector3.up, Quaternion.identity);
-            
-            if (_lastSpawnedFigure != null) 
-            {
-                _lastSpawnedFigure.ApplyRotation(domino.transform);
-                domino.ApplyRotation(_lastSpawnedFigure.transform);
-            }
-            
-            _lastSpawnedFigure = domino;
+            var currentInstance = Instantiate(_prefab, position + Vector3.up, Quaternion.identity);
+
+            if (_previousInstance != null)
+                if (DistanceBetweenFigures(currentInstance.transform.position, _previousInstance.transform.position) < _lineBreakDistance)
+                    RotateSpawnedFigures(currentInstance);
+
+            _previousInstance = currentInstance;
+        }
+
+        private void RotateSpawnedFigures(DominoFigure current)
+        {
+            _previousInstance.ApplyRotation(current.transform);
+            current.ApplyRotation(_previousInstance.transform);
+        }
+
+        private float DistanceBetweenFigures(Vector3 first, Vector3 second)
+        {
+            return Vector3.Distance(first, second);
         }
 
         private Ray GetMouseRay()

@@ -18,7 +18,7 @@ public class DominoFigure : MonoBehaviour
         if (other.collider.GetComponent<DominoFigure>())
             _audioSource.Play();
     }
-    
+
     public void ApplyRotation(Transform rotateTo)
     {
         _transform.LookAt(rotateTo);
