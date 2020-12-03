@@ -21,13 +21,7 @@ namespace Player
             _spawner = GetComponent<Spawner>();
         }
 
-        private void Update()
-        {
-            if (Input.GetMouseButton(0))
-                TryPlaceFigure();
-        }
-
-        private void TryPlaceFigure()
+        public void TryPlaceFigure()
         {
             if (CanPlaceFigure())
               _spawner.Spawn(_spawnPosition);
