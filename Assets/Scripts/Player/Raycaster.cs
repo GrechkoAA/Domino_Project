@@ -1,19 +1,25 @@
 ﻿using System.Linq;
+using Figure;
 using UnityEngine;
 
 namespace Player
 {
+    [RequireComponent(typeof(Spawner))]
     public class Raycaster : MonoBehaviour
     {
-        [SerializeField] private DominoFigure _prefab;
-        [SerializeField] private float _minimalDistanceBetweenFigures = 0.2f;
-        [SerializeField] private float _lineBreakDistance = 1f;
         [SerializeField] private Camera _camera;
+        [SerializeField] private float _minimalDistanceBetweenFigures = 0.2f;
+
+        private Spawner _spawner;
         
         private Vector3 _spawnPosition;
-        private DominoFigure _previousInstance;
 
         private const string PlaceableGround = "Ground";
+
+        private void Awake()
+        {
+            _spawner = GetComponent<Spawner>();
+        }
 
         private void Update()
         {
@@ -24,7 +30,7 @@ namespace Player
         private void TryPlaceFigure()
         {
             if (CanPlaceFigure())
-              Spawn(_spawnPosition);
+              _spawner.Spawn(_spawnPosition);
         }
 
         private bool CanPlaceFigure()
@@ -45,28 +51,6 @@ namespace Player
             }
             
             return false;
-        }
-
-        private void Spawn(Vector3 position)
-        {
-            var currentInstance = Instantiate(_prefab, position + Vector3.up, Quaternion.identity);
-
-            if (_previousInstance != null)
-                if (DistanceBetweenFigures(currentInstance.transform.position, _previousInstance.transform.position) < _lineBreakDistance)
-                    RotateSpawnedFigures(currentInstance);
-
-            _previousInstance = currentInstance;
-        }
-
-        private void RotateSpawnedFigures(DominoFigure current)
-        {
-            _previousInstance.ApplyRotation(current.transform);
-            current.ApplyRotation(_previousInstance.transform);
-        }
-
-        private float DistanceBetweenFigures(Vector3 first, Vector3 second)
-        {
-            return Vector3.Distance(first, second);
         }
 
         private Ray GetMouseRay()
