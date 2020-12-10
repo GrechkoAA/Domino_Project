@@ -28,9 +28,8 @@ namespace dev
         private void CreateObjects()
         {
             _place = false;
-            
-            if (_createdObjectPool.Count > 0)
-                DeleteObjects();
+
+            DeleteAlreadyExistedGrounds();
             
             for (int i = 1; i <= _sections; i++)
                 PlaceGroundBlock(i);
@@ -41,14 +40,22 @@ namespace dev
                 ChangeGroundToPlaceable(j);
         }
 
+        private void DeleteAlreadyExistedGrounds()
+        {
+            if (_createdObjectPool.Count > 0)
+                DeleteObjects();
+        }
+
         private void DeleteObjects()
         {
             _deleteAll = false;
 
             if (_createdObjectPool.Count <= 0) return;
             
-            foreach (var obj in _createdObjectPool)
-                DestroyImmediate(obj.gameObject);
+            foreach (var ground in _createdObjectPool)
+                DestroyImmediate(ground);
+
+            _createdObjectPool = new List<GameObject>();
         }
 
         private void PlaceGroundBlock(int offset)
@@ -60,11 +67,13 @@ namespace dev
 
         private void ChangeGroundToPlaceable(int index)
         {
-            _createdObjectPool.RemoveAt(_placeableSections[index]);
-            DestroyImmediate(_createdObjectPool[_placeableSections[index]].gameObject);
+            DestroyImmediate(_createdObjectPool[_placeableSections[index] - 1]);
+            _createdObjectPool.RemoveAt(_placeableSections[index] - 1);
             Vector3 newPosition = GetGroundPosition(_placeableSections[index]);
             var instance = Instantiate(_placeableGround, newPosition, Quaternion.identity);
-            _createdObjectPool.Insert(_placeableSections[index], instance);
+            _createdObjectPool.Insert(_placeableSections[index] - 1, instance);
+            
+            Debug.Log(_createdObjectPool.Count);
         }
 
         private Vector3 GetGroundPosition(int offset)
