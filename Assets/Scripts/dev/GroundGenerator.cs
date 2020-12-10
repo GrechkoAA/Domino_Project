@@ -15,7 +15,7 @@ namespace dev
         [SerializeField] private bool _place;
         [SerializeField] private bool _deleteAll;
 
-        private List<GameObject> _createdObjectPool;
+        private List<GameObject> _createdObjectPool = new List<GameObject>();
 
         private void Update()
         {
@@ -33,22 +33,12 @@ namespace dev
                 DeleteObjects();
             
             for (int i = 1; i <= _sections; i++)
-            {
-                Vector3 newPosition = new Vector3(transform.position.x + GetComponent<MeshRenderer>().bounds.size.x * i, transform.position.y, transform.position.z);
-                var instance = Instantiate(_ground, newPosition, Quaternion.identity);
-                _createdObjectPool.Add(instance);
-            }
+                PlaceGroundBlock(i);
 
             if (_placeableSections.Length <= 0) return;
 
             for (int j = 0; j < _placeableSections.Length; j++)
-            {
-                _createdObjectPool.RemoveAt(_placeableSections[j]);
-                DestroyImmediate(_createdObjectPool[_placeableSections[j]].gameObject);
-                Vector3 newPosition = new Vector3(transform.position.x + GetComponent<MeshRenderer>().bounds.size.x * _placeableSections[j], transform.position.y, transform.position.z);
-                var instance = Instantiate(_placeableGround, newPosition, Quaternion.identity);
-                _createdObjectPool.Insert(_placeableSections[j], instance);
-            }
+                ChangeGroundToPlaceable(j);
         }
 
         private void DeleteObjects()
@@ -59,6 +49,27 @@ namespace dev
             
             foreach (var obj in _createdObjectPool)
                 DestroyImmediate(obj.gameObject);
+        }
+
+        private void PlaceGroundBlock(int offset)
+        {
+            Vector3 newPosition = GetGroundPosition(offset);
+            var instance = Instantiate(_ground, newPosition, Quaternion.identity);
+            _createdObjectPool.Add(instance);
+        }
+
+        private void ChangeGroundToPlaceable(int index)
+        {
+            _createdObjectPool.RemoveAt(_placeableSections[index]);
+            DestroyImmediate(_createdObjectPool[_placeableSections[index]].gameObject);
+            Vector3 newPosition = GetGroundPosition(_placeableSections[index]);
+            var instance = Instantiate(_placeableGround, newPosition, Quaternion.identity);
+            _createdObjectPool.Insert(_placeableSections[index], instance);
+        }
+
+        private Vector3 GetGroundPosition(int offset)
+        {
+            return new Vector3(transform.position.x + GetComponent<MeshRenderer>().bounds.size.x * offset, transform.position.y, transform.position.z);
         }
     }
 }
