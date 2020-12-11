@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 7140931364721172946}
   - component: {fileID: 3557243175874813402}
   m_Layer: 0
-  m_Name: UnplaceableGround
-  m_TagString: Untagged
+  m_Name: Ground
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

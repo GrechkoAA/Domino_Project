@@ -17,12 +17,21 @@ namespace dev
 
         private List<GameObject> _createdObjectPool = new List<GameObject>();
 
+        private void Start()
+        {
+            _place = false;
+            _deleteAll = false;
+        }
+        
         private void Update()
         {
-            if (_place)
-                CreateObjects();
-            if (_deleteAll)
-                DeleteObjects();
+            if (Application.isEditor)
+            {
+                if (_place)
+                    CreateObjects();
+                if (_deleteAll)
+                    DeleteObjects();
+            }
         }
 
         private void CreateObjects()
@@ -72,8 +81,6 @@ namespace dev
             Vector3 newPosition = GetGroundPosition(_placeableSections[index]);
             var instance = Instantiate(_placeableGround, newPosition, Quaternion.identity);
             _createdObjectPool.Insert(_placeableSections[index] - 1, instance);
-            
-            Debug.Log(_createdObjectPool.Count);
         }
 
         private Vector3 GetGroundPosition(int offset)
