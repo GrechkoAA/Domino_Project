@@ -12,12 +12,12 @@ namespace dev
 
         [SerializeField] private GameObject _ground;
         [SerializeField] private GameObject _placeableGround;
-        [SerializeField] private bool _place;
-        [SerializeField] private bool _deleteAll;
+        [SerializeField] private bool _place = false;
+        [SerializeField] private bool _deleteAll = false;
 
         private List<GameObject> _createdObjectPool = new List<GameObject>();
 
-        private void Start()
+        private void Awake()
         {
             _place = false;
             _deleteAll = false;
