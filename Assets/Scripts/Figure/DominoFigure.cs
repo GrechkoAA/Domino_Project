@@ -14,6 +14,9 @@ namespace Figure
         private MeshRenderer _mesh;
         private Material _material;
 
+        private bool _isFell;
+        private bool _isVisible;
+
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
@@ -27,9 +30,21 @@ namespace Figure
             {
                 _audioSource.Play();
                 StartCoroutine(ChangeColor());
+                _isFell = true;
             }
         }
-        
+
+        private void OnBecameVisible()
+        {
+            _isVisible = true;
+        }
+
+        private void OnBecameInvisible()
+        {
+            if (!_isFell && _isVisible)
+                Debug.Log(gameObject.name + " GameOver");
+        }
+
         public void ApplyRotation(Transform rotateTo)
         {
             _transform.LookAt(rotateTo);
