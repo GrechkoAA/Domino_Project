@@ -9,13 +9,15 @@ namespace Figure
     [RequireComponent(typeof(MeshRenderer))]
     public class DominoFigure : MonoBehaviour
     {
+        public event Action FigureStayAndLeftScreen;
+        
+        public bool IsFell { get; private set; }
+        public bool IsVisible { get; private set; }
+        
         private AudioSource _audioSource;
         private Transform _transform;
         private MeshRenderer _mesh;
         private Material _material;
-
-        private bool _isFell;
-        private bool _isVisible;
 
         private void Awake()
         {
@@ -30,19 +32,19 @@ namespace Figure
             {
                 _audioSource.Play();
                 StartCoroutine(ChangeColor());
-                _isFell = true;
+                IsFell = true;
             }
         }
 
         private void OnBecameVisible()
         {
-            _isVisible = true;
+            IsVisible = true;
         }
 
         private void OnBecameInvisible()
         {
-            if (!_isFell && _isVisible)
-                Debug.Log(gameObject.name + " GameOver");
+            if (!IsFell && IsVisible)
+                FigureStayAndLeftScreen?.Invoke();
         }
 
         public void ApplyRotation(Transform rotateTo)
