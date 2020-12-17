@@ -13484,7 +13484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefab: {fileID: 5269928657830716438, guid: 6a67fd97cb08d4c1d818a33ba8be2144, type: 3}
   _lineBreakDistance: 1
-  _figureHandler: {fileID: 0}
+  _figureHandler: {fileID: 454084270}
 --- !u!4 &1519602314
 Transform:
   m_ObjectHideFlags: 0
