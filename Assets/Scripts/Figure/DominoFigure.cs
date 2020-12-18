@@ -10,9 +10,10 @@ namespace Figure
     public class DominoFigure : MonoBehaviour
     {
         public event Action FigureStayAndLeftScreen;
-        
-        public bool IsFell { get; private set; }
-        public bool IsVisible { get; private set; }
+
+        private bool _isFell;
+
+        private FigureRenderState _state = FigureRenderState.NotRendered;
         
         private AudioSource _audioSource;
         private Transform _transform;
@@ -32,18 +33,18 @@ namespace Figure
             {
                 _audioSource.Play();
                 StartCoroutine(ChangeColor());
-                IsFell = true;
+                _isFell = true;
             }
         }
 
         private void OnBecameVisible()
         {
-            IsVisible = true;
+            _state = FigureRenderState.Rendered;
         }
 
         private void OnBecameInvisible()
         {
-            if (!IsFell && IsVisible)
+            if (!_isFell && _state == FigureRenderState.Rendered)
                 FigureStayAndLeftScreen?.Invoke();
         }
 
