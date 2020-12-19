@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 namespace Figure
@@ -22,6 +23,8 @@ namespace Figure
         private Material _material;
         private Rigidbody _rigidbody;
 
+        private readonly float _maxFallSpeed = 0.3f;
+        
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
@@ -34,7 +37,7 @@ namespace Figure
         {
             if (_isFell) return;
             if (!other.collider.GetComponent<DominoFigure>()) return;
-            if (_rigidbody.velocity.y > -0.2f) return;
+            if (_rigidbody.velocity.y > _maxFallSpeed) return;
             
             _isFell = true;
             StartCoroutine(ChangeColor());

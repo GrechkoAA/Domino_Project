@@ -17,15 +17,12 @@ namespace Core
         public void HandleCreatedFigure(DominoFigure figure)
         {
             HandleFigure(figure);
-            Debug.Log(_handles.Count);
         }
         
         private void HandleExistedFigures()
         {
             foreach (var figure in gameObject.GetComponentsInChildren<DominoFigure>())
                 HandleFigure(figure);
-            
-            Debug.Log(_handles.Count);
         }
 
         private void HandleFigure(DominoFigure figure)
