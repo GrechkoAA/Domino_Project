@@ -9,7 +9,7 @@ namespace Figure
     [RequireComponent(typeof(MeshRenderer))]
     public class DominoFigure : MonoBehaviour
     {
-        public event Action FigureStayAndLeftScreen;
+        public event Action FigureNotFellAndLeftScreen;
 
         private bool _isFell;
 
@@ -27,14 +27,20 @@ namespace Figure
             _mesh = GetComponent<MeshRenderer>();
         }
 
+        private void OnCollisionStay(Collision other)
+        {
+            if (_isFell) return;
+            if (!other.gameObject.CompareTag("Ground")) return;
+            if (!(GetComponent<Rigidbody>().velocity.y < -0.2f)) return;
+            
+            _isFell = true;
+            StartCoroutine(ChangeColor());
+        }
+
         private void OnCollisionEnter(Collision other)
         {
             if (other.collider.GetComponent<DominoFigure>())
-            {
                 _audioSource.Play();
-                StartCoroutine(ChangeColor());
-                _isFell = true;
-            }
         }
 
         private void OnBecameVisible()
@@ -45,7 +51,7 @@ namespace Figure
         private void OnBecameInvisible()
         {
             if (!_isFell && _state == FigureRenderState.Rendered)
-                FigureStayAndLeftScreen?.Invoke();
+                FigureNotFellAndLeftScreen?.Invoke();
         }
 
         public void ApplyRotation(Transform rotateTo)
