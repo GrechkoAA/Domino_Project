@@ -12,6 +12,7 @@ namespace dev
 
         [SerializeField] private GameObject _ground;
         [SerializeField] private GameObject _placeableGround;
+        [SerializeField] private GameObject _finishGround;
         [SerializeField] private bool _place = false;
         [SerializeField] private bool _deleteAll = false;
 
@@ -47,6 +48,8 @@ namespace dev
 
             for (int j = 0; j < _placeableSections.Length; j++)
                 ChangeGroundToPlaceable(j);
+
+            PlaceGroundFinish();
         }
 
         private void DeleteAlreadyExistedGrounds()
@@ -81,6 +84,12 @@ namespace dev
             Vector3 newPosition = GetGroundPosition(_placeableSections[index]);
             var instance = Instantiate(_placeableGround, newPosition, Quaternion.identity);
             _createdObjectPool.Insert(_placeableSections[index] - 1, instance);
+        }
+
+        private void PlaceGroundFinish()
+        {
+            var instance = Instantiate(_finishGround, GetGroundPosition(_createdObjectPool.Count + 1), Quaternion.identity);
+            _createdObjectPool.Add(instance);
         }
 
         private Vector3 GetGroundPosition(int offset)
