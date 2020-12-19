@@ -8749,7 +8749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movingDirection: {fileID: 1278777593}
-  _isMoving: 0
+  _isMoving: 1
   _speed: 2
 --- !u!1 &973337916
 GameObject:
@@ -10605,7 +10605,7 @@ GameObject:
   - component: {fileID: 1187205637}
   - component: {fileID: 1187205636}
   m_Layer: 0
-  m_Name: DominoFigure(Clone)
+  m_Name: LOX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10802,13 +10802,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187205635}
-  m_LocalRotation: {x: -0.006370887, y: 0.8758629, z: -0.481822, w: 0.025907934}
+  m_LocalRotation: {x: -0.0044995397, y: 0.8391166, z: -0.54329693, w: 0.0262976}
   m_LocalPosition: {x: -0.12006682, y: 22.57313, z: 20.958408}
   m_LocalScale: {x: 0.38188264, y: 0.801898, z: 0.09518463}
   m_Children: []
   m_Father: {fileID: 454084269}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 65.719, y: 173.15302, z: -5.0400004}
 --- !u!1 &1195862856
 GameObject:
   m_ObjectHideFlags: 0
@@ -17004,13 +17004,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972634816}
-  m_LocalRotation: {x: 0.040114313, y: 0.8742678, z: -0.4802151, w: -0.058652103}
+  m_LocalRotation: {x: 0.05478773, y: 0.86318606, z: -0.49759436, w: -0.06563566}
   m_LocalPosition: {x: -0.12011055, y: 21.775963, z: 20.452785}
   m_LocalScale: {x: 0.38188276, y: 0.801898, z: 0.095184654}
   m_Children: []
   m_Father: {fileID: 454084269}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 58.412003, y: -161.31201, z: 17.775002}
 --- !u!1 &1975759270
 GameObject:
   m_ObjectHideFlags: 0
