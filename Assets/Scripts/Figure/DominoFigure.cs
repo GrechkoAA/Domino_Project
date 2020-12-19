@@ -7,6 +7,7 @@ namespace Figure
     [RequireComponent(typeof(AudioSource))]
     [RequireComponent(typeof(Transform))]
     [RequireComponent(typeof(MeshRenderer))]
+    [RequireComponent(typeof(Rigidbody))]
     public class DominoFigure : MonoBehaviour
     {
         public event Action FigureNotFellAndLeftScreen;
@@ -19,19 +20,21 @@ namespace Figure
         private Transform _transform;
         private MeshRenderer _mesh;
         private Material _material;
+        private Rigidbody _rigidbody;
 
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
             _transform = GetComponent<Transform>();
             _mesh = GetComponent<MeshRenderer>();
+            _rigidbody = GetComponent<Rigidbody>();
         }
 
         private void OnCollisionStay(Collision other)
         {
             if (_isFell) return;
-            if (!other.gameObject.CompareTag("Ground")) return;
-            if (!(GetComponent<Rigidbody>().velocity.y < -0.2f)) return;
+            if (!other.collider.GetComponent<DominoFigure>()) return;
+            if (_rigidbody.velocity.y > -0.2f) return;
             
             _isFell = true;
             StartCoroutine(ChangeColor());
