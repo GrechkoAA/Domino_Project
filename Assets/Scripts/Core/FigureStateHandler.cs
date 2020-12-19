@@ -31,15 +31,13 @@ namespace Core
         private void HandleFigure(DominoFigure figure)
         {
             _handles.Add(figure);
-            figure.FigureStayAndLeftScreen += OnFigureStayAndLeftScreen;
+            figure.FigureNotFellAndLeftScreen += OnFigureNotFellAndLeftScreen;
         }
 
-        private void OnFigureStayAndLeftScreen()
+        private void OnFigureNotFellAndLeftScreen()
         {
             foreach (var figure in _handles)
-            {
-                figure.FigureStayAndLeftScreen -= OnFigureStayAndLeftScreen;
-            }
+                figure.FigureNotFellAndLeftScreen -= OnFigureNotFellAndLeftScreen;
 
             Debug.Log(gameObject.name + " GAMEOVER");
         }
