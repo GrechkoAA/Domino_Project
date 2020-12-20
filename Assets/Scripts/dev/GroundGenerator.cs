@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+
 namespace dev
 {
     [ExecuteInEditMode]
@@ -60,13 +62,13 @@ namespace dev
 
         private void DeleteObjects()
         {
-            _deleteAll = false;
-
-            if (_createdObjectPool.Count <= 0) return;
+            print(transform.childCount);
             
-            foreach (var ground in _createdObjectPool)
-                DestroyImmediate(ground);
-
+            _deleteAll = false;
+            
+            for (int i = transform.childCount - 1; i >= 0; i--) 
+                DestroyImmediate(transform.GetChild(i).gameObject);
+            
             _createdObjectPool = new List<GameObject>();
         }
 
@@ -74,6 +76,7 @@ namespace dev
         {
             Vector3 newPosition = GetGroundPosition(offset);
             var instance = Instantiate(_ground, newPosition, Quaternion.identity);
+            instance.transform.SetParent(transform);
             _createdObjectPool.Add(instance);
         }
 
@@ -83,12 +86,14 @@ namespace dev
             _createdObjectPool.RemoveAt(_placeableSections[index] - 1);
             Vector3 newPosition = GetGroundPosition(_placeableSections[index]);
             var instance = Instantiate(_placeableGround, newPosition, Quaternion.identity);
+            instance.transform.SetParent(transform);
             _createdObjectPool.Insert(_placeableSections[index] - 1, instance);
         }
 
         private void PlaceGroundFinish()
         {
             var instance = Instantiate(_finishGround, GetGroundPosition(_createdObjectPool.Count + 1), Quaternion.identity);
+            instance.transform.SetParent(transform);
             _createdObjectPool.Add(instance);
         }
 
@@ -98,3 +103,5 @@ namespace dev
         }
     }
 }
+
+#endif
