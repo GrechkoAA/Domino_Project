@@ -1,3 +1,5 @@
+using System;
+using Ground;
 using Player;
 using UnityEngine;
 
@@ -6,8 +8,19 @@ namespace Core
     public class GameSession : MonoBehaviour
     {
         [SerializeField] private GameObject _player;
+        [SerializeField] private FinishGround _finish;
 
         private GameState _currentGameState;
+
+        private void OnEnable()
+        {
+            _finish.LevelFinished += OnLevelFinished;
+        }
+
+        private void OnDisable()
+        {
+            _finish.LevelFinished -= OnLevelFinished;
+        }
 
         private void Start()
         {
@@ -43,6 +56,11 @@ namespace Core
         private void DisablePlayerControl()
         {
             _player.SetActive(false);
+        }
+
+        private void OnLevelFinished()
+        {
+            print("Level Finished");
         }
     }
 }
