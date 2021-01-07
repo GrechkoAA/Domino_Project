@@ -1,9 +1,9 @@
 using System;
 using Figure;
 using UnityEngine;
-
 namespace Core
 {
+[ExecuteAlways]
     public class Spawner : MonoBehaviour
     {
         [SerializeField] private DominoFigure _prefab;
