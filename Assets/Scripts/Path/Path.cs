@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using System;
+using Core;
 using Figure;
 using UnityEngine;
 
@@ -9,19 +10,20 @@ public class Path : MonoBehaviour
     [SerializeField, Min(0)] private int _numberSegments;
     [SerializeField] private bool _showHandles;
     [SerializeField] private System.Collections.Generic.List<Transform> _handles;
-
     [SerializeField] private Spawner _spawner;
-    
+
+    [Header("FiguresConfig")]
+    [SerializeField] private float _spacing = 0.2f;
+   
     private bool _currenShowHandles = true;
     private int _numberHandles = 4;
-    public bool Spawn;
+    private int _defaulSegmentNumbers = 20;
 
     private void Start()
     {
-        if (Application.isPlaying == true)
+        if (Application.isPlaying)
         {
             SpawnFigures();
-            
             Destroy(gameObject);
         }
     }
@@ -71,34 +73,12 @@ public class Path : MonoBehaviour
     private void Update()
     {
         if (transform.childCount < GetNumberHandles())
-        {
             AddSegment();
-        }
         else if (transform.childCount > GetNumberHandles())
-        {
             RemoveSegment();
-        }
-
+        
         if (_currenShowHandles != _showHandles)
-        {
             ShowHandles(_showHandles);
-        }
-
-        for (int i = 0; i < _handles.Count; i++)
-        {
-            Vector3 newPosition = _handles[i].position;
-
-            if (_handles[i].position != newPosition)
-            {
-
-            }
-        }
-    }
-
-    public void MovePoint(int i, Vector3 handle)
-    {
-
-
     }
 
     private void RemoveSegment()
@@ -125,9 +105,7 @@ public class Path : MonoBehaviour
         _currenShowHandles = _showHandles;
 
         foreach (var handle in _handles)
-        {
             handle.GetComponent<MeshRenderer>().enabled = enable;
-        }
     }
 
     private int GetNumberHandles()
@@ -139,10 +117,8 @@ public class Path : MonoBehaviour
     {
         ShowPath();
 
-        if (_showHandles == true)
-        {
+        if (_showHandles)
             ShowHandleConnection();
-        }
     }
 
     private void ShowHandleConnection()
@@ -158,38 +134,23 @@ public class Path : MonoBehaviour
 
     private void ShowPath()
     {
-        int sigmentsNumber = 20;
         Gizmos.color = Color.green;
 
-        Vector3[] preveousePoints = GetPreviousePoints();
+        Vector3[] previousePoints = GetPreviousePoints();
 
-        for (int i = 0; i < sigmentsNumber + 1; i++)
+        for (int i = 0; i < _defaulSegmentNumbers + 1; i++)
         {
-            float paremeter = (float)i / sigmentsNumber;
-
             for (int x = 0; x < _numberHandles - 1; x += 3)
             {
-                Vector3 point = Bezier.GetPoint(_handles[x].position, _handles[x + 1].position, _handles[x + 2].position, _handles[x + 3].position, paremeter);
-                Gizmos.DrawLine(preveousePoints[x / 3], point);
+                Vector3 point = Bezier.GetPoint(_handles[x].position, _handles[x + 1].position, _handles[x + 2].position, _handles[x + 3].position, GetParameter(i));
+                Gizmos.DrawLine(previousePoints[x / 3], point);
 
-                preveousePoints[x / 3] = point;
+                previousePoints[x / 3] = point;
             }
         }
     }
 
-    private Vector3[] GetPreviousePoints()
-    {
-        Vector3[] preveousePoints = new Vector3[_handles.Count / 3];
-
-        for (int i = 0; i < preveousePoints.Length; i++)
-        {
-            preveousePoints[i] = _handles[i * 3].position;
-        }
-
-        return preveousePoints;
-    }
-
-    private void SpawnFigures()
+    private void SpawnFigures1()
     {
         var spacing = 0.2f;
         int sigmentsNumber = 20;
@@ -221,5 +182,53 @@ public class Path : MonoBehaviour
                 preveousePoints[x / 3] = point;
             }
         }
+    }
+    
+    private void SpawnFigures()
+    {
+        Vector3[] previousePoints = GetPreviousePoints();
+
+        for (int i = 0; i < _defaulSegmentNumbers + 1; i++)
+        {
+            for (int x = 0; x < _numberHandles - 1; x += 3)
+            {
+                Vector3 firstPoint = previousePoints[x / 3];
+                Vector3 secondPoint = Bezier.GetPoint(_handles[x].position, _handles[x + 1].position, _handles[x + 2].position, _handles[x + 3].position, GetParameter(i));
+                Vector3 direction = (secondPoint - firstPoint).normalized;
+
+                int figuresCount = CalculateNumberOfFiguresOverDistance(firstPoint, secondPoint);
+                
+                for (int j = 0; j < figuresCount; j++)
+                    _spawner.Spawn(firstPoint + (direction * GetNewSpacing(j)));
+
+                previousePoints[x / 3] = secondPoint;
+            }
+        }
+    }
+    
+    private float GetParameter(int currentSegment)
+    {
+        return (float)currentSegment / _defaulSegmentNumbers;
+    }
+
+    private int CalculateNumberOfFiguresOverDistance(Vector3 firstPoint, Vector3 secondPoint)
+    {
+        var distance = Vector3.Distance(firstPoint, secondPoint);
+        return (int)(distance / _spacing);
+    }
+
+    private float GetNewSpacing(int figureNumber)
+    {
+        return _spacing * (figureNumber + 1);
+    }
+
+    private Vector3[] GetPreviousePoints()
+    {
+        Vector3[] previousePoints = new Vector3[_handles.Count / 3];
+
+        for (int i = 0; i < previousePoints.Length; i++)
+            previousePoints[i] = _handles[i * 3].position;
+
+        return previousePoints;
     }
 }
