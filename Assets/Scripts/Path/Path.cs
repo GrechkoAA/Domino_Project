@@ -150,40 +150,6 @@ public class Path : MonoBehaviour
         }
     }
 
-    private void SpawnFigures1()
-    {
-        var spacing = 0.2f;
-        int sigmentsNumber = 20;
-        Gizmos.color = Color.green;
-
-        Vector3[] preveousePoints = GetPreviousePoints();
-
-        for (int i = 0; i < sigmentsNumber + 1; i++)
-        {
-            float paremeter = (float)i / sigmentsNumber;
-
-            for (int x = 0; x < _numberHandles - 1; x += 3)
-            {
-                Vector3 point = Bezier.GetPoint(_handles[x].position, _handles[x + 1].position, _handles[x + 2].position, _handles[x + 3].position, paremeter);
-
-                var firstPoint = preveousePoints[x / 3];
-                var secondPoint = point;
-                
-                var distance = Vector3.Distance(firstPoint, secondPoint);
-                var direction = (secondPoint - firstPoint).normalized;
-                var figuresCount = (int) (distance / spacing);
-                
-                for (int j = 0; j < figuresCount; j++)
-                {
-                    var newSpacing = spacing * (j + 1);
-                    _spawner.Spawn(firstPoint + (direction * newSpacing));
-                }
-                
-                preveousePoints[x / 3] = point;
-            }
-        }
-    }
-    
     private void SpawnFigures()
     {
         Vector3[] previousePoints = GetPreviousePoints();
