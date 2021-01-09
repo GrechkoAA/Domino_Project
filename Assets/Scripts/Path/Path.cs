@@ -18,6 +18,7 @@ public class Path : MonoBehaviour
     private bool _currenShowHandles = true;
     private int _numberHandles = 4;
     private int _defaulSegmentNumbers = 20;
+    private int _currentFigureNumber = 0;
 
     private void Start()
     {
@@ -165,7 +166,7 @@ public class Path : MonoBehaviour
                 int figuresCount = CalculateNumberOfFiguresOverDistance(firstPoint, secondPoint);
                 
                 for (int j = 0; j < figuresCount; j++)
-                    _spawner.Spawn(firstPoint + (direction * GetNewSpacing(j)));
+                    _spawner.Spawn(firstPoint + direction * GetNewSpacing(j));
 
                 previousePoints[x / 3] = secondPoint;
             }
