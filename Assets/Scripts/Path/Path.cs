@@ -20,6 +20,9 @@ public class Path : MonoBehaviour
     private int _defaulSegmentNumbers = 20;
     private int _currentFigureNumber = 0;
 
+    private Vector3 _firstPoint;
+    private Vector3 _secondPoint;
+
     private void Start()
     {
         if (Application.isPlaying)
@@ -161,15 +164,19 @@ public class Path : MonoBehaviour
             {
                 Vector3 firstPoint = previousePoints[x / 3];
                 Vector3 secondPoint = Bezier.GetPoint(_handles[x].position, _handles[x + 1].position, _handles[x + 2].position, _handles[x + 3].position, GetParameter(i));
-                Vector3 direction = (secondPoint - firstPoint).normalized;
-
-                int figuresCount = CalculateNumberOfFiguresOverDistance(firstPoint, secondPoint);
                 
-                for (int j = 0; j < figuresCount; j++)
-                    _spawner.Spawn(firstPoint + direction * GetNewSpacing(j));
+                //int figuresCount = CalculateNumberOfFiguresOverDistance(firstPoint, secondPoint);
 
+                _firstPoint = firstPoint;
+                _secondPoint = secondPoint;
+                
                 previousePoints[x / 3] = secondPoint;
             }
+            
+            int figuresCount = CalculateNumberOfFiguresOverDistance(_firstPoint, _secondPoint);
+            Vector3 direction = (_secondPoint - _firstPoint).normalized;
+            for (int j = 0; j < figuresCount; j++)
+                _spawner.Spawn(_firstPoint + direction * GetNewSpacing(j));
         }
     }
     
