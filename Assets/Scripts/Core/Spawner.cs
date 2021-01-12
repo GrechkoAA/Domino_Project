@@ -22,6 +22,7 @@ namespace Core
                     RotateSpawnedFigures(currentInstance);
             
             _figureHandler.HandleCreatedFigure(currentInstance);
+
             _previousInstance = currentInstance;
         }
         

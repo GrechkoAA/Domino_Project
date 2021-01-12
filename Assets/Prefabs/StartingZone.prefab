@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6310348244608140816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 32.59, y: 0, z: -21.51}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -112,5 +112,6 @@ MonoBehaviour:
   _ground: {fileID: 7469270615092040700, guid: 10b56b0eb0e664214908f2c436bd5c76, type: 3}
   _placeableGround: {fileID: 3521330249216743011, guid: 432107cff089544f69133dda6605dbc9,
     type: 3}
+  _finishGround: {fileID: 0}
   _place: 0
   _deleteAll: 0
