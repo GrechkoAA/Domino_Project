@@ -14,10 +14,12 @@ public class Path : MonoBehaviour
 
     [Header("FiguresConfig")]
     [SerializeField] private float _spacing = 0.2f;
+
+    [Header("PathConfig")] 
+    [SerializeField] private int _defaulSegmentNumbers = 20;
    
     private bool _currenShowHandles = true;
     private int _numberHandles = 4;
-    private int _defaulSegmentNumbers = 20;
     private int _currentFigureNumber = 0;
 
     private Vector3 _firstPoint;
@@ -164,8 +166,6 @@ public class Path : MonoBehaviour
             {
                 Vector3 firstPoint = previousePoints[x / 3];
                 Vector3 secondPoint = Bezier.GetPoint(_handles[x].position, _handles[x + 1].position, _handles[x + 2].position, _handles[x + 3].position, GetParameter(i));
-                
-                //int figuresCount = CalculateNumberOfFiguresOverDistance(firstPoint, secondPoint);
 
                 _firstPoint = firstPoint;
                 _secondPoint = secondPoint;
@@ -175,6 +175,7 @@ public class Path : MonoBehaviour
             
             int figuresCount = CalculateNumberOfFiguresOverDistance(_firstPoint, _secondPoint);
             Vector3 direction = (_secondPoint - _firstPoint).normalized;
+
             for (int j = 0; j < figuresCount; j++)
                 _spawner.Spawn(_firstPoint + direction * GetNewSpacing(j));
         }

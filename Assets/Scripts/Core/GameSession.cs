@@ -60,7 +60,7 @@ namespace Core
 
         private void OnLevelFinished()
         {
-            print("Level Finished");
+            Debug.Log("Level Finished");
         }
     }
 }
