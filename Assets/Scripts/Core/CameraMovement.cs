@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Core
 {
@@ -9,7 +10,7 @@ namespace Core
         [SerializeField] private float _speed = 1f;
 
         private Vector3 _lastSavedPosition;
-        
+
         private void Update()
         {
             if (_isMoving)
