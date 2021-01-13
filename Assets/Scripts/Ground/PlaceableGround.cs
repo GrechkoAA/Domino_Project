@@ -15,11 +15,13 @@ namespace Ground
         
         private int _offset = 2;
         private int _maximumBlocks = 5;
-        
+
         private List<GameObject> _blocks = new List<GameObject>();
 
         public void Update()
         {
+            if (Application.isPlaying) return;
+            
             if (_generate)
             {
                 _generate = false;
