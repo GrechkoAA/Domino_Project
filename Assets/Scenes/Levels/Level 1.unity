@@ -2508,7 +2508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1519602310}
-  _finish: {fileID: 0}
+  _finish: {fileID: 1501381951}
 --- !u!4 &1198882539
 Transform:
   m_ObjectHideFlags: 0
@@ -5130,7 +5130,6 @@ GameObject:
   - component: {fileID: 1826806653}
   - component: {fileID: 1826806652}
   - component: {fileID: 1826806651}
-  - component: {fileID: 1826806650}
   m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
@@ -5152,18 +5151,6 @@ Transform:
   m_Father: {fileID: 1501381950}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1826806650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1826806648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23d9a4391eb045aea3c30ed0cca7e9e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &1826806651
 MeshCollider:
   m_ObjectHideFlags: 0
