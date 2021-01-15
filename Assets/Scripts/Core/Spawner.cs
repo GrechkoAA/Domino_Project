@@ -4,17 +4,25 @@ using UnityEngine;
 namespace Core
 {
 [ExecuteAlways]
+
+[RequireComponent(typeof(FigurePool))]
     public class Spawner : MonoBehaviour
     {
-        [SerializeField] private DominoFigure _prefab;
         [SerializeField] private float _lineBreakDistance = 1f;
         [SerializeField] private FigureStateHandler _figureHandler;
 
+        private FigurePool _pool;
         private DominoFigure _previousInstance;
-        
+
+        private void Awake()
+        {
+            _pool = GetComponent<FigurePool>();
+        }
+
         public void Spawn(Vector3 position)
         {
-            var currentInstance = Instantiate(_prefab, position + Vector3.up, Quaternion.identity);
+            var currentInstance = _pool.GetObject();
+            currentInstance.transform.position = position + Vector3.up;
             currentInstance.transform.SetParent(_figureHandler.transform);
 
             if (_previousInstance != null)
