@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 #if UNITY_EDITOR
@@ -16,8 +15,6 @@ namespace Ground
         private int _offset = 2;
         private int _maximumBlocks = 5;
 
-        private List<GameObject> _blocks = new List<GameObject>();
-
         public void Update()
         {
             if (Application.isPlaying) return;
@@ -28,13 +25,13 @@ namespace Ground
                 GeneratePlaceableBlocks();
             }
             
-            if (_blocks.Count > 0)
+            if (transform.childCount > 0)
                 ChangeColorIfNotPlaceable();
         }
 
         private void GeneratePlaceableBlocks()
         {
-            if (_blocks.Count > 0)
+            if (transform.childCount > 0)
                 DeleteExistedBlocks();
 
             CreateNewBlocks();
@@ -42,10 +39,8 @@ namespace Ground
 
         private void DeleteExistedBlocks()
         {
-            foreach (var block in _blocks)
+            foreach (var block in GetComponentsInChildren<Block>())
                 DestroyImmediate(block);
-
-            _blocks = new List<GameObject>();
         }
 
         private void CreateNewBlocks()
@@ -59,16 +54,16 @@ namespace Ground
                     localPosition = new Vector3(localPosition.x + x * _offset, 0, localPosition.z - z * _offset);
                     instance.transform.localPosition = localPosition;
                     
-                    _blocks.Add(instance);
+                    //_blocks.Add(instance);
                 }
             }
         }
 
         private void ChangeColorIfNotPlaceable()
         {
-            foreach (var block in _blocks)
+            foreach (var block in GetComponentsInChildren<Block>())
             {
-                if (IsPlaceable(block))
+                if (IsPlaceable(block.gameObject))
                     block.GetComponent<MeshRenderer>().material = _greenMaterial;
                 else
                     block.GetComponent<MeshRenderer>().material = _redMaterial;
