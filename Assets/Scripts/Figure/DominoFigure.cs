@@ -12,6 +12,7 @@ namespace Figure
     public class DominoFigure : MonoBehaviour
     {
         public event Action FigureNotFellAndLeftScreen;
+        public event Action<DominoFigure> FigureFellAndLeftScreen;
 
         private bool _isFell;
 
@@ -24,6 +25,7 @@ namespace Figure
         private Rigidbody _rigidbody;
 
         private readonly float _maxFallSpeed = 0.3f;
+        private Color _defaultColor;
         
         private void Awake()
         {
@@ -31,6 +33,8 @@ namespace Figure
             _transform = GetComponent<Transform>();
             _mesh = GetComponent<MeshRenderer>();
             _rigidbody = GetComponent<Rigidbody>();
+
+            _defaultColor = _mesh.material.color;
         }
 
         private void OnCollisionStay(Collision other)
@@ -57,7 +61,15 @@ namespace Figure
         private void OnBecameInvisible()
         {
             if (!_isFell && _state == FigureRenderState.Rendered)
+            {
                 FigureNotFellAndLeftScreen?.Invoke();
+            }
+
+            if (_isFell && _state == FigureRenderState.Rendered)
+            {
+                _material.color = _defaultColor;
+                FigureFellAndLeftScreen?.Invoke(this);
+            }
         }
 
         public void ApplyRotation(Transform rotateTo)

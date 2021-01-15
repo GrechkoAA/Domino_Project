@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Figure;
 using UnityEngine;
 namespace Core
@@ -13,6 +14,7 @@ namespace Core
 
         private FigurePool _pool;
         private DominoFigure _previousInstance;
+        private bool _canSpawn = true;
 
         private void Awake()
         {
@@ -21,8 +23,7 @@ namespace Core
 
         public void Spawn(Vector3 position)
         {
-            var currentInstance = _pool.GetObject();
-            currentInstance.transform.position = position + Vector3.up;
+            var currentInstance = _pool.GetObject(position + Vector3.up);
             currentInstance.transform.SetParent(_figureHandler.transform);
 
             if (_previousInstance != null)
@@ -31,6 +32,8 @@ namespace Core
             
             _figureHandler.HandleCreatedFigure(currentInstance);
 
+            currentInstance.FigureFellAndLeftScreen += Despawn;
+            
             _previousInstance = currentInstance;
         }
         
@@ -43,6 +46,13 @@ namespace Core
         private float DistanceBetweenFigures(Vector3 first, Vector3 second)
         {
             return Vector3.Distance(first, second);
+        }
+
+        private void Despawn(DominoFigure instance)
+        {
+            instance.FigureFellAndLeftScreen -= Despawn;
+            
+            _pool.ReturnObject(instance);
         }
     }
 }

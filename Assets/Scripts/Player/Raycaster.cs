@@ -36,7 +36,7 @@ namespace Player
             foreach (var hit in hits)
             {
                 if (!hit.collider.CompareTag(PlaceableGround)) continue;
-                
+
                 var sphereHits = Physics.SphereCastAll(hit.point, _minimalDistanceBetweenFigures, Vector3.up);
                 if (sphereHits.Any(sphereHit => sphereHit.collider.GetComponent<DominoFigure>() != null))
                     return false;

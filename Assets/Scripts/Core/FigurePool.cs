@@ -8,7 +8,7 @@ namespace Core
     public class FigurePool : MonoBehaviour
     {
         [SerializeField] private DominoFigure _prefab;
-        [SerializeField] private int _poolLimit = 100;
+        [SerializeField] private int _poolLimit = 50;
         
         private Queue<DominoFigure> _availableObjects = new Queue<DominoFigure>();
 
@@ -17,10 +17,15 @@ namespace Core
             GrowPool();
         }
 
-        public DominoFigure GetObject()
+        public DominoFigure GetObject(Vector3 position)
         {
+            if (_availableObjects.Count == 0)
+                GrowPool();
+            
             var instance = _availableObjects.Dequeue();
+            instance.transform.position = position;
             instance.gameObject.SetActive(true);
+           
             return instance;
         }
         
@@ -28,7 +33,6 @@ namespace Core
         {
             instance.gameObject.SetActive(false);
             _availableObjects.Enqueue(instance);
-            
         }
 
         private void GrowPool()
@@ -40,6 +44,5 @@ namespace Core
                 _availableObjects.Enqueue(instance);
             }
         }
-        
     }
 }
