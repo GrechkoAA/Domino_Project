@@ -53,8 +53,6 @@ namespace Ground
                     var localPosition = instance.transform.localPosition;
                     localPosition = new Vector3(localPosition.x + x * _offset, 0, localPosition.z - z * _offset);
                     instance.transform.localPosition = localPosition;
-                    
-                    //_blocks.Add(instance);
                 }
             }
         }
@@ -72,7 +70,6 @@ namespace Ground
 
         private bool IsPlaceable(GameObject block)
         {
-            Debug.Log(block.tag);
             return block.CompareTag("Ground");
         }
     }

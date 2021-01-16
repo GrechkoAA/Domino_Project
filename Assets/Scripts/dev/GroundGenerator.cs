@@ -18,7 +18,7 @@ namespace dev
         [SerializeField] private bool _place = false;
         [SerializeField] private bool _deleteAll = false;
 
-        private List<GameObject> _createdObjectPool = new List<GameObject>();
+        private List<GameObject> _createdObjectPool = new List<GameObject>(); 
 
         private void Awake()
         {

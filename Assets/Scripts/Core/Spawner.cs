@@ -14,7 +14,6 @@ namespace Core
 
         private FigurePool _pool;
         private DominoFigure _previousInstance;
-        private bool _canSpawn = true;
 
         private void Awake()
         {
