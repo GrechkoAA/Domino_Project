@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 101101837167396918}
   - component: {fileID: 6613395663847437158}
   m_Layer: 0
-  m_Name: StartingZone
+  m_Name: Playground
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   _ground: {fileID: 7469270615092040700, guid: 10b56b0eb0e664214908f2c436bd5c76, type: 3}
   _placeableGround: {fileID: 3521330249216743011, guid: 432107cff089544f69133dda6605dbc9,
     type: 3}
-  _finishGround: {fileID: 0}
+  _finishGround: {fileID: 5077353933563324201, guid: dec5999f756a745bb975b87572f9471f,
+    type: 3}
   _place: 0
   _deleteAll: 0
