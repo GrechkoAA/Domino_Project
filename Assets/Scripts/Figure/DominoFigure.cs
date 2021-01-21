@@ -24,7 +24,7 @@ namespace Figure
         private Material _material;
         private Rigidbody _rigidbody;
 
-        private readonly float _maxFallSpeed = 0.3f;
+        private float _currentZ;
         private Color _defaultColor;
         
         private void Awake()
@@ -41,7 +41,8 @@ namespace Figure
         {
             if (_isFell) return;
             if (!other.collider.GetComponent<DominoFigure>()) return;
-            if (_rigidbody.velocity.y > _maxFallSpeed) return;
+            if (transform.rotation.eulerAngles.z < 350) return; 
+            Debug.Log(transform.rotation.eulerAngles.z, gameObject);
             
             _isFell = true;
             StartCoroutine(ChangeColor());
