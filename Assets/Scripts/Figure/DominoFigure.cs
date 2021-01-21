@@ -26,6 +26,7 @@ namespace Figure
 
         private float _currentZ;
         private Color _defaultColor;
+        private float _fallingVelocityY = -0.4f;
         
         private void Awake()
         {
@@ -41,8 +42,7 @@ namespace Figure
         {
             if (_isFell) return;
             if (!other.collider.GetComponent<DominoFigure>()) return;
-            if (transform.rotation.eulerAngles.z < 350) return; 
-            Debug.Log(transform.rotation.eulerAngles.z, gameObject);
+            if (_rigidbody.velocity.y > _fallingVelocityY) return;
             
             _isFell = true;
             StartCoroutine(ChangeColor());
