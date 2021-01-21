@@ -26,7 +26,7 @@ namespace Figure
 
         private float _currentZ;
         private Color _defaultColor;
-        private float _fallingVelocityY = -0.4f;
+        private float _fallingVelocityY = -0.3f;
         
         private void Awake()
         {
