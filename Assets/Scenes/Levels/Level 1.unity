@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 4902506}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,7 +199,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 133043290}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -305,7 +305,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 153492855}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -411,7 +411,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 202376654}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -517,7 +517,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 239884040}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -623,7 +623,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -775,7 +775,7 @@ GameObject:
   - component: {fileID: 340872243}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -837,7 +837,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -881,7 +881,7 @@ GameObject:
   - component: {fileID: 401467949}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -943,7 +943,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -987,7 +987,7 @@ GameObject:
   - component: {fileID: 450329154}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1049,7 +1049,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1148,7 +1148,7 @@ GameObject:
   - component: {fileID: 514050487}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1210,7 +1210,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1254,7 +1254,7 @@ GameObject:
   - component: {fileID: 580850588}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1316,7 +1316,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1556,7 +1556,7 @@ GameObject:
   - component: {fileID: 695387563}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1618,7 +1618,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1754,7 +1754,7 @@ GameObject:
   - component: {fileID: 786657056}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1816,7 +1816,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1860,7 +1860,7 @@ GameObject:
   - component: {fileID: 892392469}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1922,7 +1922,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2186,7 +2186,7 @@ GameObject:
   - component: {fileID: 920944591}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2248,7 +2248,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2690,7 +2690,7 @@ GameObject:
   - component: {fileID: 1111511466}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2752,7 +2752,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2925,7 +2925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1519602310}
-  _finish: {fileID: 0}
+  _finish: {fileID: 257546248}
 --- !u!4 &1198882539
 Transform:
   m_ObjectHideFlags: 0
@@ -3175,7 +3175,7 @@ GameObject:
   - component: {fileID: 1243474459}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3237,7 +3237,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3638,7 +3638,7 @@ GameObject:
   - component: {fileID: 1331041226}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3700,7 +3700,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3744,7 +3744,7 @@ GameObject:
   - component: {fileID: 1410651979}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3806,7 +3806,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4158,7 +4158,7 @@ GameObject:
   - component: {fileID: 1594109918}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4220,7 +4220,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4484,7 +4484,7 @@ GameObject:
   - component: {fileID: 1740058271}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4546,7 +4546,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4590,7 +4590,7 @@ GameObject:
   - component: {fileID: 1769523904}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4652,7 +4652,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4936,7 +4936,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1818204567}
-  m_LocalRotation: {x: 0.005173862, y: 0.876112, z: -0.48205364, w: 0.005044639}
+  m_LocalRotation: {x: 0.005173916, y: 0.8761119, z: -0.4820536, w: 0.0050446386}
   m_LocalPosition: {x: -0.12, y: 16.47, z: 17.09}
   m_LocalScale: {x: 0.38188, y: 0.8018999, z: 0.09517998}
   m_Children: []
@@ -5654,7 +5654,7 @@ GameObject:
   - component: {fileID: 1975835857}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5716,7 +5716,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5760,7 +5760,7 @@ GameObject:
   - component: {fileID: 1985686374}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5822,7 +5822,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5866,7 +5866,7 @@ GameObject:
   - component: {fileID: 2011537149}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5928,7 +5928,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5972,7 +5972,7 @@ GameObject:
   - component: {fileID: 2032200041}
   m_Layer: 0
   m_Name: Block(Clone)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6034,7 +6034,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b7a6bc22664b4e439f87a7a4c0664c1, type: 2}
+  - {fileID: 2100000, guid: 427eab7dd3a1942be9a3aa26c4fbf10b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

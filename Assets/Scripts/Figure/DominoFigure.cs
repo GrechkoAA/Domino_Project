@@ -23,8 +23,7 @@ namespace Figure
         private MeshRenderer _mesh;
         private Material _material;
         private Rigidbody _rigidbody;
-
-        private float _currentZ;
+        
         private Color _defaultColor;
         private float _fallingVelocityY = -0.3f;
         
