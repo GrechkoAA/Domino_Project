@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Figure;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Core
 {
@@ -9,6 +10,8 @@ namespace Core
     public class FigureStateHandler : MonoBehaviour
     {
         private List<DominoFigure> _handles = new List<DominoFigure>();
+
+        public event UnityAction LevelFailed;
 
         private void Awake()
         {
@@ -37,7 +40,7 @@ namespace Core
             foreach (var figure in _handles)
                 figure.FigureNotFellAndLeftScreen -= OnFigureNotFellAndLeftScreen;
 
-            Debug.Log(gameObject.name + " GAMEOVER");
+            LevelFailed?.Invoke();
         }
     }
 }

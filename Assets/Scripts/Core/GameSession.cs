@@ -1,6 +1,3 @@
-using System;
-using Ground;
-using Player;
 using UnityEngine;
 
 namespace Core
@@ -8,19 +5,8 @@ namespace Core
     public class GameSession : MonoBehaviour
     {
         [SerializeField] private GameObject _player;
-        [SerializeField] private FinishGround _finish;
 
         private GameState _currentGameState;
-
-        private void OnEnable()
-        {
-            _finish.LevelFinished += OnLevelFinished;
-        }
-
-        private void OnDisable()
-        {
-            _finish.LevelFinished -= OnLevelFinished;
-        }
 
         private void Start()
         {
@@ -33,21 +19,28 @@ namespace Core
             EnablePlayerControl();
             Time.timeScale = 1;
         }
-
-        public void PauseGame()
-        {
-            _currentGameState = GameState.Paused;
-            DisablePlayerControl();
-            Time.timeScale = 0;
-        }
-
-        private void WaitingToStart()
+        
+        public void WaitingToStart()
         {
             _currentGameState = GameState.WaitingToStart;
             DisablePlayerControl();
             Time.timeScale = 0;
         }
+        
+        public void OnGameOver()
+        {
+            _currentGameState = GameState.GameOver;
+            DisablePlayerControl();
+            Time.timeScale = 0;
+        }
 
+        private void PauseGame()
+        {
+            _currentGameState = GameState.Paused;
+            DisablePlayerControl();
+            Time.timeScale = 0;
+        }
+        
         private void EnablePlayerControl()
         {
             _player.SetActive(true);
@@ -56,11 +49,6 @@ namespace Core
         private void DisablePlayerControl()
         {
             _player.SetActive(false);
-        }
-
-        private void OnLevelFinished()
-        {
-            Debug.Log("Level Finished");
         }
     }
 }
