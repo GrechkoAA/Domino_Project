@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Figure;
 using UnityEngine;
@@ -26,6 +27,11 @@ namespace Core
             if (_timeSinceLastFigureFell > _timeLimit)
                 LevelFailed?.Invoke();
         }
+        
+        private void OnDisable()
+        {
+            UnsubscribeFromAllFigures();
+        }
 
         public void HandleCreatedFigure(DominoFigure figure)
         {
@@ -47,18 +53,22 @@ namespace Core
 
         private void OnFigureNotFellAndLeftScreen()
         {
-            foreach (var figure in _handles)
-            {
-                figure.FigureNotFellAndLeftScreen -= OnFigureNotFellAndLeftScreen;
-                figure.FigureFell -= ResetFigureTimer;
-            }
-            
+            UnsubscribeFromAllFigures();
             LevelFailed?.Invoke();
         }
 
         private void ResetFigureTimer()
         {
             _timeSinceLastFigureFell = 0;
+        }
+
+        private void UnsubscribeFromAllFigures()
+        {
+            foreach (var figure in _handles)
+            {
+                figure.FigureNotFellAndLeftScreen -= OnFigureNotFellAndLeftScreen;
+                figure.FigureFell -= ResetFigureTimer;
+            }
         }
     }
 }
