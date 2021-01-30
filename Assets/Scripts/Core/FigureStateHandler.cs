@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Figure;
 using UnityEngine;
@@ -10,12 +9,22 @@ namespace Core
     public class FigureStateHandler : MonoBehaviour
     {
         private List<DominoFigure> _handles = new List<DominoFigure>();
+        private float _timeSinceLastFigureFell = 0;
+        private float _timeLimit = 3f;
 
         public event UnityAction LevelFailed;
 
         private void Awake()
         {
             HandleExistedFigures();
+        }
+
+        private void Update()
+        {
+            _timeSinceLastFigureFell += Time.deltaTime;
+            
+            if (_timeSinceLastFigureFell > _timeLimit)
+                LevelFailed?.Invoke();
         }
 
         public void HandleCreatedFigure(DominoFigure figure)
@@ -33,14 +42,23 @@ namespace Core
         {
             _handles.Add(figure);
             figure.FigureNotFellAndLeftScreen += OnFigureNotFellAndLeftScreen;
+            figure.FigureFell += ResetFigureTimer;
         }
 
         private void OnFigureNotFellAndLeftScreen()
         {
             foreach (var figure in _handles)
+            {
                 figure.FigureNotFellAndLeftScreen -= OnFigureNotFellAndLeftScreen;
-
+                figure.FigureFell -= ResetFigureTimer;
+            }
+            
             LevelFailed?.Invoke();
+        }
+
+        private void ResetFigureTimer()
+        {
+            _timeSinceLastFigureFell = 0;
         }
     }
 }

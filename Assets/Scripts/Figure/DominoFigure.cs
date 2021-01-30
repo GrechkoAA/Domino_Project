@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
 namespace Figure
@@ -13,6 +12,7 @@ namespace Figure
     {
         public event Action FigureNotFellAndLeftScreen;
         public event Action<DominoFigure> FigureFellAndLeftScreen;
+        public event Action FigureFell;
 
         private bool _isFell;
 
@@ -26,7 +26,7 @@ namespace Figure
         
         private Color _defaultColor;
         private float _fallingVelocityY = -0.3f;
-        
+
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
@@ -44,6 +44,7 @@ namespace Figure
             if (_rigidbody.velocity.y > _fallingVelocityY) return;
             
             _isFell = true;
+            FigureFell?.Invoke();
             StartCoroutine(ChangeColor());
         }
 
