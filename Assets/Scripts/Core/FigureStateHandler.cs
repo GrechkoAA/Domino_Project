@@ -6,7 +6,6 @@ using UnityEngine.Events;
 
 namespace Core
 {
-    [ExecuteAlways]
     public class FigureStateHandler : MonoBehaviour
     {
         private List<DominoFigure> _handles = new List<DominoFigure>();
