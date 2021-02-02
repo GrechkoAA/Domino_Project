@@ -62,8 +62,6 @@ namespace dev
 
         private void DeleteObjects()
         {
-            print(transform.childCount);
-            
             _deleteAll = false;
             
             for (int i = transform.childCount - 1; i >= 0; i--) 
