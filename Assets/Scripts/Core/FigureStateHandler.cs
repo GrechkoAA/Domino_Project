@@ -12,6 +12,8 @@ namespace Core
         private float _timeSinceLastFigureFell = 0;
         private float _timeLimit = 3f;
 
+        private bool _isTimesOut = false;
+        
         public event UnityAction TimesOut;
 
         private void Awake()
@@ -21,10 +23,14 @@ namespace Core
 
         private void Update()
         {
-            _timeSinceLastFigureFell += Time.deltaTime;
+            if (_isTimesOut) return;
             
+            _timeSinceLastFigureFell += Time.deltaTime;
             if (_timeSinceLastFigureFell > _timeLimit)
+            {
                 TimesOut?.Invoke();
+                _isTimesOut = true;
+            }
         }
         
         private void OnDisable()
