@@ -63,9 +63,13 @@ namespace dev
         private void DeleteObjects()
         {
             _deleteAll = false;
-            
-            for (int i = transform.childCount - 1; i >= 0; i--) 
+
+            for (int i = transform.childCount - 1; i >= 0; i--)
+            {
+                if (transform.gameObject.CompareTag("NonDelete")) continue;
+                
                 DestroyImmediate(transform.GetChild(i).gameObject);
+            }
             
             _createdObjectPool = new List<GameObject>();
         }
