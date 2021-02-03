@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 2308894126640604446}
   m_Layer: 0
   m_Name: Playground
-  m_TagString: Ground
+  m_TagString: NonDelete
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,10 +68,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e49f2a59ea54ff08f697507544365e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sections: 6
-  _placeableSections: 0100000005000000
+  _sections: 2
+  _placeableSections: 01000000
   _ground: {fileID: 1780570827429658500, guid: 30d6122ce37ef40b59c69f1edc69d3be, type: 3}
-  _placeableGround: {fileID: 3521330249216743011, guid: 432107cff089544f69133dda6605dbc9,
+  _placeableGround: {fileID: 2343489843678433789, guid: 5967248c65ecf430e97f9374265d2b05,
     type: 3}
   _finishGround: {fileID: 5077353933563324201, guid: dec5999f756a745bb975b87572f9471f,
     type: 3}
@@ -198,6 +198,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform_02 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: dfd31f5966ae54565bb194699bd69bce,
+        type: 3}
+      propertyPath: m_TagString
+      value: NonDelete
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfd31f5966ae54565bb194699bd69bce, type: 3}
 --- !u!1 &5978583885947912862 stripped
@@ -219,10 +224,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1482650431603154113}
     m_Modifications:
+    - target: {fileID: 5581195880537186682, guid: 4c6c5d76355ae4c4681bfaa38a6d3615,
+        type: 3}
+      propertyPath: m_TagString
+      value: NonDelete
+      objectReference: {fileID: 0}
+    - target: {fileID: 5581195881529599133, guid: 4c6c5d76355ae4c4681bfaa38a6d3615,
+        type: 3}
+      propertyPath: m_TagString
+      value: NonDelete
+      objectReference: {fileID: 0}
     - target: {fileID: 7818553904140116591, guid: 4c6c5d76355ae4c4681bfaa38a6d3615,
         type: 3}
       propertyPath: m_Name
       value: Pusher
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818553904140116591, guid: 4c6c5d76355ae4c4681bfaa38a6d3615,
+        type: 3}
+      propertyPath: m_TagString
+      value: NonDelete
       objectReference: {fileID: 0}
     - target: {fileID: 8780803892537121735, guid: 4c6c5d76355ae4c4681bfaa38a6d3615,
         type: 3}
