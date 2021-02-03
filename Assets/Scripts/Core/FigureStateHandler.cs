@@ -12,7 +12,7 @@ namespace Core
         private float _timeSinceLastFigureFell = 0;
         private float _timeLimit = 3f;
 
-        public event UnityAction LevelFailed;
+        public event UnityAction TimesOut;
 
         private void Awake()
         {
@@ -24,7 +24,7 @@ namespace Core
             _timeSinceLastFigureFell += Time.deltaTime;
             
             if (_timeSinceLastFigureFell > _timeLimit)
-                LevelFailed?.Invoke();
+                TimesOut?.Invoke();
         }
         
         private void OnDisable()
@@ -53,7 +53,7 @@ namespace Core
         private void OnFigureNotFellAndLeftScreen()
         {
             UnsubscribeFromAllFigures();
-            LevelFailed?.Invoke();
+            TimesOut?.Invoke();
         }
 
         private void ResetFigureTimer()

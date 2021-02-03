@@ -17,13 +17,13 @@ namespace UI
         private void OnEnable()
         {
             _finishGround.LevelFinished += OnLevelComplete;
-            _figureHandler.LevelFailed += OnLevelFailed;
+            _figureHandler.TimesOut += OnLevelFailed;
         }
         
         private void OnDisable()
         {
             _finishGround.LevelFinished -= OnLevelComplete;
-            _figureHandler.LevelFailed -= OnLevelFailed;
+            _figureHandler.TimesOut -= OnLevelFailed;
         }
 
         public void StartLevel()
