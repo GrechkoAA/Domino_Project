@@ -37,6 +37,12 @@ namespace Figure
             _defaultColor = _mesh.material.color;
         }
 
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.collider.GetComponent<DominoFigure>())
+                _audioSource.Play();
+        }
+        
         private void OnCollisionStay(Collision other)
         {
             if (_isFell) return;
@@ -47,13 +53,7 @@ namespace Figure
             FigureFell?.Invoke();
             StartCoroutine(ChangeColor());
         }
-
-        private void OnCollisionEnter(Collision other)
-        {
-            if (other.collider.GetComponent<DominoFigure>())
-                _audioSource.Play();
-        }
-
+        
         private void OnBecameVisible()
         {
             _state = FigureRenderState.Rendered;
