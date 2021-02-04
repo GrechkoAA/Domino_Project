@@ -5174,7 +5174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _presenter: {fileID: 1195862857}
   _session: {fileID: 1198882538}
-  _finishGround: {fileID: 0}
+  _finishGround: {fileID: 1587063520}
   _figureHandler: {fileID: 454084270}
 --- !u!1 &1202869967
 GameObject:
