@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Figure;
 using UnityEngine;
@@ -35,7 +34,8 @@ namespace Core
         
         private void OnDisable()
         {
-            UnsubscribeFromAllFigures();
+            foreach (var figure in _handles)
+                figure.FigureFell -= ResetFigureTimer;
         }
 
         public void HandleCreatedFigure(DominoFigure figure)
@@ -52,28 +52,12 @@ namespace Core
         private void HandleFigure(DominoFigure figure)
         {
             _handles.Add(figure);
-            figure.FigureNotFellAndLeftScreen += OnFigureNotFellAndLeftScreen;
             figure.FigureFell += ResetFigureTimer;
-        }
-
-        private void OnFigureNotFellAndLeftScreen()
-        {
-            UnsubscribeFromAllFigures();
-            TimesOut?.Invoke();
         }
 
         private void ResetFigureTimer()
         {
             _timeSinceLastFigureFell = 0;
-        }
-
-        private void UnsubscribeFromAllFigures()
-        {
-            foreach (var figure in _handles)
-            {
-                figure.FigureNotFellAndLeftScreen -= OnFigureNotFellAndLeftScreen;
-                figure.FigureFell -= ResetFigureTimer;
-            }
         }
     }
 }

@@ -10,7 +10,6 @@ namespace Figure
     [RequireComponent(typeof(Rigidbody))]
     public class DominoFigure : MonoBehaviour
     {
-        public event Action FigureNotFellAndLeftScreen;
         public event Action<DominoFigure> FigureFellAndLeftScreen;
         public event Action FigureFell;
 
@@ -61,16 +60,17 @@ namespace Figure
 
         private void OnBecameInvisible()
         {
-            if (!_isFell && _state == FigureRenderState.Rendered)
-            {
-                FigureNotFellAndLeftScreen?.Invoke();
-            }
-
             if (_isFell && _state == FigureRenderState.Rendered)
             {
-                _material.color = _defaultColor;
+                ChangeToDefault();
                 FigureFellAndLeftScreen?.Invoke(this);
             }
+        }
+
+        private void ChangeToDefault()
+        {
+            _material.color = _defaultColor;
+            _isFell = false;
         }
 
         public void ApplyRotation(Transform rotateTo)
