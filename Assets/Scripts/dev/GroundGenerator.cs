@@ -66,8 +66,7 @@ namespace dev
 
             for (int i = transform.childCount - 1; i >= 0; i--)
             {
-                if (transform.gameObject.CompareTag("NonDelete")) continue;
-                
+                if (transform.GetChild(i).CompareTag("NonDelete")) continue;
                 DestroyImmediate(transform.GetChild(i).gameObject);
             }
             
