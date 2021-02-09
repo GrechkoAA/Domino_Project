@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5016279607947524483}
   m_Layer: 2
   m_Name: ParticleArrow
-  m_TagString: Untagged
+  m_TagString: NonDelete
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5016279607947524540}
-  m_LocalRotation: {x: -0.4378067, y: -0.60967976, z: -0.3872624, w: 0.53539115}
+  m_LocalRotation: {x: -0.4378046, y: -0.60968184, z: -0.3872596, w: 0.5353925}
   m_LocalPosition: {x: 34.148, y: -1.77, z: -21.512}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -115,7 +115,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 14
+      scalar: 10
       minScalar: 5
       maxCurve:
         serializedVersion: 2
