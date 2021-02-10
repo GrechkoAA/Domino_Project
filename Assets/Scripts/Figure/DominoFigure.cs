@@ -12,7 +12,8 @@ namespace Figure
     {
         public event Action<DominoFigure> FigureFellAndLeftScreen;
         public event Action FigureFell;
-
+        public Color CurrentColor { get; private set; }
+        
         private bool _isFell;
 
         private FigureRenderState _state = FigureRenderState.NotRendered;
@@ -34,6 +35,7 @@ namespace Figure
             _rigidbody = GetComponent<Rigidbody>();
 
             _defaultColor = _mesh.material.color;
+            CurrentColor = _defaultColor;
         }
 
         private void OnCollisionEnter(Collision other)
@@ -70,6 +72,7 @@ namespace Figure
         private void ChangeToDefault()
         {
             _material.color = _defaultColor;
+            CurrentColor = _defaultColor;
             _isFell = false;
         }
 
@@ -84,7 +87,8 @@ namespace Figure
             _material = _mesh.material;
             while (_material.color != Color.yellow)
             {
-                _material.color = Color.Lerp(_material.color, Color.yellow, 0.05f);
+                CurrentColor = Color.Lerp(_material.color, Color.yellow, 0.05f); 
+                _material.color = CurrentColor;
                 yield return new WaitForSeconds(0f);
             }
         }
