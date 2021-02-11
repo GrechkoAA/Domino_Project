@@ -36,8 +36,8 @@ namespace Core
         
         private void RotateSpawnedFigures(DominoFigure current)
         {
-            _previousInstance.ApplyRotation(current.transform);
-            current.ApplyRotation(_previousInstance.transform);
+            _previousInstance.SetRotation(current.transform);
+            current.SetRotation(_previousInstance.transform);
         }
         
         private float DistanceBetweenFigures(Vector3 first, Vector3 second)
