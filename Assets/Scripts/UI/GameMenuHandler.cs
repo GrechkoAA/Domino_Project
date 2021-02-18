@@ -38,7 +38,7 @@ namespace UI
 
         public void LoadNextLevel()
         {
-            if (SceneManager.GetActiveScene().buildIndex >= SceneManager.sceneCount)
+            if (SceneManager.GetActiveScene().buildIndex >= SceneManager.sceneCountInBuildSettings)
                 SceneManager.LoadScene(0, LoadSceneMode.Single);
             else
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
