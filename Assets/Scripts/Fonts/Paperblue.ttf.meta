@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 2889dc8c1b38d490ebf6545eb86e77e9
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Paperblue
+  fontNames:
+  - Paperblue
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 90eeb8095782f44a8a820e79d2a2c162, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
