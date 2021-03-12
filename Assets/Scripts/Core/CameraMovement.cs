@@ -9,11 +9,13 @@ namespace Core
     {
         [SerializeField] private Transform _movingDirection;
         [SerializeField] private bool _isMoving;
-        [SerializeField] private float _speed = 1f;
+        [SerializeField] private float _speed = 5f;
 
+        private float _smoothness = 0.125f;
+        
         private Vector3 _lastSavedPosition;
 
-        private void Update()
+        private void LateUpdate()
         {
             if (_isMoving)
                 MoveCamera();
@@ -22,8 +24,8 @@ namespace Core
         private void MoveCamera()
         {
             _lastSavedPosition = transform.position;
-            transform.position = Vector3.MoveTowards(transform.position, _movingDirection.position, _speed * Time.deltaTime);
-            transform.position = new Vector3(transform.position.x, _lastSavedPosition.y, _lastSavedPosition.z);
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, _movingDirection.transform.position, _smoothness * _speed * Time.deltaTime);
+            transform.position = new Vector3(smoothedPosition.x, _lastSavedPosition.y, smoothedPosition.z);
         }
 
         private void OnTriggerEnter(Collider other)
